@@ -8,8 +8,6 @@ export const recoverPublicKey = (digest: string, signatureString: string): strin
   const signature = decodeSignature(signatureString);
   const recoveryParam = getRecoveryParam(signature);
 
-  console.log('recoveryParam', recoveryParam);
-
   const result = ec.recoverPubKey(data, signature, recoveryParam);
 
   return `0x${result.encode('hex', false).slice(2)}`;
